@@ -14,7 +14,7 @@
                 <input type="text" class="form-control" name="name">
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-success">Save</button>
+                <button type="submit" class="btn btn-success mb-3">Save</button>
             </div>
         </form>
     </div>

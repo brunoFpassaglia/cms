@@ -1,6 +1,10 @@
 @if (session()->has('success'))
-    <div class="alert alert-succes">
-        {{ session()->get('success')}}
+    <div class="alert alert-success">
+        <ul class="list-group">
+            <li class="list-group-item">
+                {{ session()->get('success')}}
+            </li>
+        </ul>
     </div>
 @endif
 @if ($errors->any())
