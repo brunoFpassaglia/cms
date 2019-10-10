@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePost;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -36,9 +37,19 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePost $request)
     {
         //
+        $validatedData = $request->validated();
+        $post = new Post();
+        $created = $post->create($validatedData);
+        if($created){
+            session()->flash('success', "Post created successfully");
+            return(redirect()->route('posts.index'));
+        }
+        else{
+            return(redirect()->route('posts.create'));
+        }
         
     }
 
