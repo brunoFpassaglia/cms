@@ -12,7 +12,7 @@
                 @foreach ($posts as $post)
                 <tr>
                     <td>
-                        <a href=" {{route('posts.edit', $post)}} ">{{ $post->name }}</a>
+                        <a href=" {{route('posts.edit', $post)}} ">{{ $post->title }}</a>
                     </td>
                 </tr>
             </tbody>
