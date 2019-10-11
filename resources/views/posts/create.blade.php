@@ -10,21 +10,20 @@
         <form action="{{ route('posts.store') }} " method="POST">
             @csrf
             <div class="form-group">
-                <label for="title">post name</label>
+                <label for="title">Post title</label>
                 <input type="text" class="form-control" name="title">
-                <label for="title">post description</label>
+                <label for="title">Post description</label>
                 <textarea type="text" class="form-control" name="description"></textarea>
-                <label for="text">Text</label>
-                <textarea type="text" class="form-control" name="description">
-                    <textarea type="text" class="form-control" name="description">
-                        <textarea type="text" class="form-control" name="description">
-                            
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-success mb-3">Save</button>
-                        </div>
-                    </form>
-                </div>
-            </div> 
-            
-            @endsection
+                <label for="text">Content</label>
+                <textarea type="text" class="form-control" name="content"></textarea>
+                <label for="text">Image</label>
+                <textarea type="text" class="form-control" name="description"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success mb-3">Save</button>
+            </div>
+        </form>
+    </div>
+</div> 
+
+@endsection
