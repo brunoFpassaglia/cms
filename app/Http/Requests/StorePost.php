@@ -25,8 +25,11 @@ class StorePost extends FormRequest
     {
         return [
             //
-            'title'=>'required',
-            'description'=>'required'
+            'title'=>'required|max:255',
+            'description'=>'required|max:255',
+            'content'=>'required',
+            'image'=>'mimes:jpeg,png|nullable',
+
         ];
     }
 }

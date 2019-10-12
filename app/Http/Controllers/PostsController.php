@@ -41,8 +41,14 @@ class PostsController extends Controller
     {
         //
         $validatedData = $request->validated();
+        //var_dump($validatedData);
+
         $post = new Post();
-        $created = $post->create($validatedData);
+        $created = $post->create(array_merge($validatedData, ['published_at'=>date('Y-m-d H:i:s')]));
+        //$post->fill(['published_at'=>date('Y-m-d H:i:s')])->save();
+        //$post->save();
+       // $post->published_at = date('Y-m-d H:i:s');
+       // $post->save();
         if($created){
             session()->flash('success', "Post created successfully");
             return(redirect()->route('posts.index'));
