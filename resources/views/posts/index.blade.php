@@ -6,13 +6,17 @@
     <div class="card card-body"> 
         <table class="table">
             <thead>
-                <th>Name</th>
+                <th>Title</th>
+                <th>Description</th>
             </thead>
             <tbody>
                 @foreach ($posts as $post)
                 <tr>
                     <td>
                         <a href=" {{route('posts.edit', $post)}} ">{{ $post->title }}</a>
+                    </td>
+                    <td>
+                        {{ $post->description }}
                     </td>
                 </tr>
             </tbody>

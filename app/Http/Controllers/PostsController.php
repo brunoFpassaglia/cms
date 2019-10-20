@@ -41,6 +41,7 @@ class PostsController extends Controller
     {
         //
         $validatedData = $request->validated();
+        $image = $request->image->store('postsImages');
         //var_dump($validatedData);
 
         $post = new Post();
