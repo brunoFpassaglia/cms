@@ -18,14 +18,21 @@
                     <td>
                         {{ $post->description }}
                     </td>
-                </tr>
-            </tbody>
-            @endforeach
-        </table>
-        <div class="mb-3">
-            <a href="{{ route('posts.create') }}" class="btn btn-success float-left">Add a post</a>
+                    <td>
+                        <button onclick="deleteHandle({{$post->id}})" class="btn btn-danger btn-sm" role="button" >Delete</button>
+                        <form id="form-delete" action=" {{ route('posts.destroy', $post->id) }}" method="POST">
+                            {{ method_field('DELETE') }}
+                            {{ csrf_field() }}
+                            @include('layouts.prompts')
+                        </td>
+                    </tr>
+                </tbody>
+                @endforeach
+            </table>
+            <div class="mb-3">
+                <a href="{{ route('posts.create') }}" class="btn btn-success float-left">Add a post</a>
+            </div>
         </div>
     </div>
-</div>
-
-@endsection
+    
+    @endsection

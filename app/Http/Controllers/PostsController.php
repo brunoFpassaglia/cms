@@ -41,7 +41,7 @@ class PostsController extends Controller
     {
         //
         $validatedData = $request->validated();
-        $image = $request->image->store('postsImages');
+        //$image = $request->image->store('postsImages');
         //var_dump($validatedData);
 
         $post = new Post();
@@ -103,5 +103,10 @@ class PostsController extends Controller
     public function destroy($id)
     {
         //
+        $post = Post::find($id);
+        $post->delete();
+        session()->flash('success', 'Post deleted successfully');
+        return(redirect()->route('posts.index'));
+        
     }
 }
