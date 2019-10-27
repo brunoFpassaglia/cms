@@ -86,6 +86,11 @@
                             <a href="{{ route('categories.index') }}">Categories</a>
                         </li>
                     </ul>
+                    <ul class="list-group mt-5">
+                        <li class="list-group-item">
+                            <a href="{{route('trashedPosts')}}">Trashed posts</a>
+                        </li>
+                    </ul>
                 </div>
                 @endauth
                 <div class="col-md-8">

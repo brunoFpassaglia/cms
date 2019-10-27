@@ -19,7 +19,9 @@
                         {{ $post->description }}
                     </td>
                     <td>
-                        <button onclick="deleteHandle({{$post->id}})" class="btn btn-danger btn-sm" role="button" >Delete</button>
+                        <button onclick="deleteHandle({{$post->id}})" class="btn btn-danger btn-sm" role="button" >
+                           {{$post->trashed() ? 'Delete':'Trash'}}
+                        </button>
                         <form id="form-delete" action=" {{ route('posts.destroy', $post->id) }}" method="POST">
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
