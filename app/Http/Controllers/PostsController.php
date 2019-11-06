@@ -80,6 +80,8 @@ class PostsController extends Controller
     public function edit($id)
     {
         //
+        $post = Post::find($id);
+        return view('posts.create')->with('post', $post);
     }
     
     /**
@@ -89,9 +91,19 @@ class PostsController extends Controller
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-    public function update(Request $request, $id)
+    public function update(StorePost $request, $id)
     {
         //
+        $validatedData = $request->validated();
+        $post =  Post::find($id);
+        $updated = $post->update($validatedData);
+        if($updated){
+            session()->flash('success', 'updated successfully');
+            return(redirect()->route('posts.index'));
+        }
+        else{
+            return(redirect()->route('posts.edit'));
+        }
     }
     
     /**

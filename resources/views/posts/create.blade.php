@@ -3,19 +3,22 @@
 @section('content')
 <div class="card card-default">
     <div class="card-header">
-        Create post
+        {{ isset($post) ? 'Edit Post' : 'Create Post'}}
     </div>
     @include('layouts.errors')
     <div class="card-body">
-        <form action="{{ route('posts.store') }} " method="POST" enctype="multipart/form-data">
+        <form action="{{ isset($post) ? route('posts.update', $post) : route('posts.store') }} " method="POST" enctype="multipart/form-data">
+            @if (isset($post))
+            @method('PUT')
+            @endif
             @csrf
             <div class="form-group">
                 <label for="title">Post title</label>
-                <input type="text" class="form-control" name="title">
+                <input type="text" class="form-control" name="title" value=" {{isset($post) ? $post->title : '' }}">
                 <label for="title">Post description</label>
-                <textarea type="text" class="form-control" name="description"></textarea>
+                <textarea type="text" class="form-control" name="description" > {{isset($post) ? $post->description : '' }}</textarea>
                 <label for="text">Content</label>
-                <textarea type="text" class="form-control" name="content"></textarea>
+                <textarea type="text" class="form-control" name="content">{{isset($post) ? $post->content : '' }}</textarea>
                 <label for="text">Image</label>
                 <input type="file" class="form-control" name="image">
             </div>
