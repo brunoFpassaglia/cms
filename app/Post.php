@@ -24,4 +24,12 @@ class Post extends Model
     public function deleteImage(){
         Storage::delete($this->image);
     }
+
+    /**
+     * defines the many to one relationship with category model
+     */
+    public function category(){
+
+        return $this->belongsTo(Category::class);
+    }
 }

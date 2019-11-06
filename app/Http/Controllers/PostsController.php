@@ -141,4 +141,15 @@ class PostsController extends Controller
         return view('posts.index')->with('posts', $posts);
         
     }
+    
+    /**
+    * Restores a trashed post
+    */
+    public function restore($id){
+        $post = Post::withTrashed()->find($id);
+        $post->restore();
+        
+        return(redirect()->route('posts.index'));
+        
+    }
 }
