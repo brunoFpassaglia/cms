@@ -7,6 +7,7 @@
         <table class="table">
             <thead>
                 <th>Name</th>
+                <th># of posts</th>
             </thead>
             <tbody>
                 @foreach ($categories as $category)
@@ -14,6 +15,7 @@
                     <td>
                         <a href=" {{route('categories.edit', $category)}} ">{{ $category->name }}</a>
                     </td>
+                <td>{{ $category->posts->count() }}</td>
                 </tr>
             </tbody>
             @endforeach

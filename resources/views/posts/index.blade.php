@@ -8,6 +8,7 @@
             <thead>
                 <th>Title</th>
                 <th>Description</th>
+                <th>Category</th>
             </thead>
             <tbody>
                 @foreach ($posts as $post)
@@ -18,6 +19,7 @@
                     <td>
                         {{ $post->description }}
                     </td>
+                    <td>{{ $post->category->name }}</td>
                     <td>
                         <button onclick="deleteHandle({{$post->id}})" class="btn btn-danger btn-sm" role="button" >
                             {{$post->trashed() ? 'Delete':'Trash'}}
