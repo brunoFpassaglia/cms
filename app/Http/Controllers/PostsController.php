@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePost;
 use App\Post;
+use App\Category;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
@@ -28,7 +29,8 @@ class PostsController extends Controller
     public function create()
     {
         //
-        return view('posts.create');
+        $categories = Category::all();
+        return view('posts.create')->with("categories", $categories);
     }
     
     /**
@@ -81,7 +83,9 @@ class PostsController extends Controller
     {
         //
         $post = Post::find($id);
-        return view('posts.create')->with('post', $post);
+        $categories = Category::all();
+        return view('posts.create')->with(['post'=>$post,
+        'categories'=>$categories]);
     }
     
     /**

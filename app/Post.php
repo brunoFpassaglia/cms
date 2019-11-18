@@ -16,6 +16,7 @@ class Post extends Model
         'content',
         'image',
         'published_at',
+        'category_id',
     ];
 
     /**

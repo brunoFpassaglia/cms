@@ -29,6 +29,7 @@ class StorePost extends FormRequest
             'description'=>'required|max:255',
             'content'=>'required',
             'image'=>'mimes:jpeg,png|nullable',
+            'category_id'=>'required',
 
         ];
     }

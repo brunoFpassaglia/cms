@@ -21,6 +21,16 @@
                 <textarea type="text" class="form-control" name="content">{{isset($post) ? $post->content : '' }}</textarea>
                 <label for="text">Image</label>
                 <input type="file" class="form-control" name="image">
+                <label for="text">Category</label>
+                <select name="category_id" id="category" class="form-control">
+                    @foreach ($categories as $category)
+                    <option value="{{ $category->id }} " @if (isset($post))
+                        selected
+                        @endif>{{ $category->name }}
+                    </option>
+                    @endforeach
+                </select>
+                
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-success mb-3">Save</button>
