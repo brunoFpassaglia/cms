@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('verifyCategories')->only(['create', 'store']);
+    }
+
     /**
     * Display a listing of the resource.
     *

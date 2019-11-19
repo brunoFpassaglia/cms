@@ -7,6 +7,17 @@
         </ul>
     </div>
 @endif
+@if (session()->has('warnings'))
+    <div class="alert alert-danger">
+        <ul class="list-group">
+            <li class="list-group-item">
+                {{ session()->get('warnings')}}
+            </li>
+        </ul>
+    </div>
+@endif
+
+
 @if ($errors->any())
 <div class="alert alert-danger">
     <ul class="list-group">
