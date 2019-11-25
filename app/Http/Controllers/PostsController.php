@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePost;
 use App\Post;
 use App\Category;
+use App\Tag;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
@@ -36,7 +37,8 @@ class PostsController extends Controller
     {
         //
         $categories = Category::all();
-        return view('posts.create')->with("categories", $categories);
+        $tags = Tag::all();
+        return view('posts.create')->with("tags", $tags)->with("categories", $categories);
     }
     
     /**
@@ -90,8 +92,9 @@ class PostsController extends Controller
         //
         $post = Post::find($id);
         $categories = Category::all();
+        $tags = Tag::all();
         return view('posts.create')->with(['post'=>$post,
-        'categories'=>$categories]);
+        'categories'=>$categories, 'tags'=>$tags]);
     }
     
     /**
