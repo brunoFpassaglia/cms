@@ -8,6 +8,8 @@ class Tag extends Model
 {
     //
     
+    // protected $table = "tag";
+    
     use SoftDeletes;
     protected $fillable = [
         'name',
