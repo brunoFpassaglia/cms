@@ -86,7 +86,7 @@
                             <a href="{{ route('categories.index') }}">Categories</a>
                         </li>
                         <li class="list-group-item">
-                            <h1>Tag<h1>
+                            <a href="{{ route('tags.index') }}">Tags</a>
                         </li>
                     </ul>
                     <ul class="list-group mt-5">
