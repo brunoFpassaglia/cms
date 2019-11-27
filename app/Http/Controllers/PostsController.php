@@ -50,12 +50,14 @@ class PostsController extends Controller
     public function store(StorePost $request)
     {
         //
+        // dd($request->validated());
         $validatedData = $request->validated();
         //$image = $request->image->store('postsImages');
         //var_dump($validatedData);
         
         $post = new Post();
         $created = $post->create(array_merge($validatedData, ['published_at'=>date('Y-m-d H:i:s')]));
+        $created->tags()->attach($request->tags);
         //$post->fill(['published_at'=>date('Y-m-d H:i:s')])->save();
         //$post->save();
         // $post->published_at = date('Y-m-d H:i:s');

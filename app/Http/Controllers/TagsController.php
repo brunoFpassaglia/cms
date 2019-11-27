@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTag;
 use App\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Session\Store;
 
 class TagsController extends Controller
 {
@@ -37,7 +39,7 @@ class TagsController extends Controller
     * @param  \Illuminate\Http\Request  $request
     * @return \Illuminate\Http\Response
     */
-    public function store(Request $request)
+    public function store(StoreTag $request)
     {
         //
         $validatedData = $request->validated();
@@ -74,22 +76,22 @@ class TagsController extends Controller
     public function edit(Tag $tag)
     {
         //
-        $tag = Tag::find($id);
+        $tag = Tag::find($tag->id);
         return view('tags.edit')->with('tag', $tag);//
     }
     
     /**
     * Update the specified resource in storage.
     *
-    * @param  \Illuminate\Http\Request  $request
+    * @param  \Illuminate\Http\StoreTag  $request
     * @param  \App\Tag  $tag
     * @return \Illuminate\Http\Response
     */
-    public function update(Request $request, Tag $tag)
+    public function update(StoreTag $request, Tag $tag)
     {
         //
         $validatedData = $request->validated();
-        $tag = Tag::find($id);
+        $tag = Tag::find($tag->id);
         $updated = $tag->update($validatedData);
         
         if($updated){
@@ -110,7 +112,7 @@ class TagsController extends Controller
     public function destroy(Tag $tag)
     {
               //
-        $tag = Tag::find($id);
+        $tag = Tag::find($tag->id);
         $tag->delete();
         session()->flash('success', 'Tag deleted successfully');
         return(redirect()->route('tags.index'));
