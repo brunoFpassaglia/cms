@@ -49,20 +49,12 @@ class PostsController extends Controller
     */
     public function store(StorePost $request)
     {
-        //
-        // dd($request->validated());
-        $validatedData = $request->validated();
-        //$image = $request->image->store('postsImages');
-        //var_dump($validatedData);
         
+        $validatedData = $request->validated();
         $post = new Post();
         $created = $post->create(array_merge($validatedData, ['published_at'=>date('Y-m-d H:i:s')]));
-        $created->tags()->attach($request->tags);
-        //$post->fill(['published_at'=>date('Y-m-d H:i:s')])->save();
-        //$post->save();
-        // $post->published_at = date('Y-m-d H:i:s');
-        // $post->save();
         if($created){
+            $created->tags()->attach($request->tags);
             session()->flash('success', "Post created successfully");
             return(redirect()->route('posts.index'));
         }
@@ -113,6 +105,7 @@ class PostsController extends Controller
         $post =  Post::find($id);
         $updated = $post->update($validatedData);
         if($updated){
+            $updated->tags()->sync($request->tags);
             session()->flash('success', 'updated successfully');
             return(redirect()->route('posts.index'));
         }

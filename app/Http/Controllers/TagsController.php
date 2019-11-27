@@ -111,11 +111,16 @@ class TagsController extends Controller
     */
     public function destroy(Tag $tag)
     {
-              //
+        //
         $tag = Tag::find($tag->id);
-        $tag->delete();
-        session()->flash('success', 'Tag deleted successfully');
-        return(redirect()->route('tags.index'));
-          //
+        if($tag->posts()->count() > 0){
+            session()->flash('warnings', 'There are posts created for this tag. Aborting delete.');
+            return redirect()->back();
+        }
+        else{
+            $tag->delete();
+            session()->flash('success', 'tag deleted successfully');
+            return(redirect()->route('tag.index'));
+        }
     }
 }

@@ -110,9 +110,14 @@ class CategoriesController extends Controller
     {
         //
         $category = Category::find($id);
-        $category->delete();
-        session()->flash('success', 'Category deleted successfully');
-        return(redirect()->route('categories.index'));
-        
+        if($category->posts()->count() > 0){
+            session()->flash('warnings', 'There are posts created for this category. Aborting delete.');
+            return redirect()->back();
+        }
+        else{
+            $category->delete();
+            session()->flash('success', 'Category deleted successfully');
+            return(redirect()->route('categories.index'));
+        }
     }
 }
