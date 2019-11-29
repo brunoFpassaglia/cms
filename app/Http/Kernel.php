@@ -63,6 +63,7 @@ class Kernel extends HttpKernel
     
         // custom middlewares
         'verifyCategories'=> \App\Http\Middleware\CheckCategoryCount::class,
+        'verifyAdmin'=>\App\Http\Middleware\CheckIfAdmin::class,
     ];
 
     /**

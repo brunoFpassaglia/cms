@@ -25,4 +25,4 @@ Route::resource('posts', 'PostsController');
 Route::get('/trashedposts', 'PostsController@indextrashed')->name('trashedPosts');
 
 Route::put('/restorepost/{post}', 'PostsController@restore')->name('restorePosts');
-Route::get('/users', 'UsersController@index')->name('users');
+Route::get('/users', 'UsersController@index')->name('users')->middleware('verifyAdmin');
