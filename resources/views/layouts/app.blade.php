@@ -94,6 +94,13 @@
                             <a href="{{route('trashedPosts')}}">Trashed posts</a>
                         </li>
                     </ul>
+                    @if (auth()->user()->isAdmin())
+                    <ul class="list-group mt-5">
+                        <li class="list-group-item">
+                            <a href="{{route('users')}}">Users</a>
+                        </li>
+                    </ul>
+                    @endif
                 </div>
                 @endauth
                 <div class="col-md-8">
