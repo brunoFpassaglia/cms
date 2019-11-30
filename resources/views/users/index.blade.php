@@ -15,7 +15,14 @@
                     <td>
                         {{$user->name}}
                     </td>
-                <td>{{$user->email}}</td>
+                    <td>{{$user->email}}</td>
+                    <td>
+                        <form action=" {{ route('users.makeAdmin', $user->id) }}" method="POST">
+                                @csrf
+                                <button class="btn btn-sm btn-primary">Make admin</button>
+                            
+                        </form>
+                    </td>
                 </tr>
             </tbody>
             @endforeach

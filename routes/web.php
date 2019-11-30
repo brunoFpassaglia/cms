@@ -26,3 +26,4 @@ Route::get('/trashedposts', 'PostsController@indextrashed')->name('trashedPosts'
 
 Route::put('/restorepost/{post}', 'PostsController@restore')->name('restorePosts');
 Route::get('/users', 'UsersController@index')->name('users')->middleware(['verifyAdmin', 'auth']);
+Route::post('/users/{user}/makeadmin', 'UsersController@makeAdmin')->name('users.makeAdmin')->middleware(['verifyAdmin', 'auth']);
